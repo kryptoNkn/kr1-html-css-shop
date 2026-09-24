@@ -24,10 +24,13 @@ orderButtons.forEach((button) => {
   });
 });
 
+
+
 // Закрываем модальное окно по кнопке «Закрыть».
 closeDialogButton.addEventListener('click', () => {
   orderDialog.close();
 });
+
 
 // Получаем форму заявки.
 const orderForm = document.getElementById('order-form');

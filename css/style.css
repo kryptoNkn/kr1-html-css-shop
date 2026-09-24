@@ -1,16 +1,7 @@
-/* 
-  Универсальное правило для всех элементов.
-  border-box делает расчёт размеров более понятным:
-  width включает content, padding и border.
-*/
+
 * {
   box-sizing: border-box;
 }
-
-/*
-  Убираем стандартный внешний отступ браузера у body.
-  Без этого вокруг страницы может появиться белая рамка.
-*/
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -19,28 +10,16 @@ body {
   background-color: #ffffff;
 }
 
-/*
-  Задаём внутренние отступы для основных областей страницы.
-  Это делает содержимое визуально отделённым от краёв окна браузера.
-*/
 header,
 main,
 footer {
   padding: 20px;
 }
 
-/*
-  Оформляем шапку страницы.
-  Пока используется простой светло-серый фон.
-*/
 header {
   background-color: #f2f2f2;
 }
 
-/*
-  Оформляем подвал страницы тем же фоном,
-  чтобы визуально отделить его от основного содержимого.
-*/
 footer {
   background-color: #f2f2f2;
 }
@@ -95,10 +74,7 @@ footer {
   text-decoration: underline;
 }
 
-/*
-  Hero-блок — первый крупный блок страницы.
-  Он визуально отделяется от остальных разделов фоном и отступами.
-*/
+
 .hero {
   max-width: 1100px;
   margin: 0 auto 32px;
@@ -122,10 +98,6 @@ footer {
   margin-top: 0;
 }
 
-/*
-  Карточка товара — самостоятельный блок.
-  На следующих занятиях карточки будут доработаны и выстроены в сетку.
-*/
 .product-card {
   margin-bottom: 16px;
   padding: 16px;
@@ -141,35 +113,24 @@ footer {
   margin-top: 0;
 }
 
-/*
-  Пока это обычная ссылка, но визуально она оформляется как кнопка.
-*/
-.button {
-  display: inline-block;
-  padding: 10px 16px;
-  color: #ffffff;
-  background-color: #0057b8;
-  text-decoration: none;
-  border-radius: 6px;
-}
 
-/*
-  Простое состояние наведения для кнопки.
-*/
-.button:hover {
-  background-color: #003f86;
-}
-
-/*
-  Дополнительный информационный блок.
-*/
-.aside-info {
-  max-width: 1100px;
-  margin: 0 auto 32px;
+.product-card {
+  margin-bottom: 16px;
   padding: 16px;
-  border-left: 4px solid #0057b8;
-  background-color: #f7f7f7;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  background-color: #ffffff;
 }
+
+/*
+  Убираем лишний верхний отступ у заголовка карточки.
+*/
+.product-card h3 {
+  margin-top: 0;
+}
+
+
+
 
 /*
   Модальное окно.
