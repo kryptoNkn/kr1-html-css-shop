@@ -144,21 +144,21 @@ footer {
 /*
   Пока это обычная ссылка, но визуально она оформляется как кнопка.
 */
-.button {
+/* .button {
   display: inline-block;
   padding: 10px 16px;
   color: #ffffff;
   background-color: #0057b8;
   text-decoration: none;
   border-radius: 6px;
-}
+} */
 
 /*
   Простое состояние наведения для кнопки.
 */
-.button:hover {
+/* .button:hover {
   background-color: #003f86;
-}
+} */
 
 /*
   Дополнительный информационный блок.
