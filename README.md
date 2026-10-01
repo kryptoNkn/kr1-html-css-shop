@@ -79,3 +79,9 @@ GitHub Pages: https://kryptonkn.github.io/kr1-html-css-shop/
 - состояния `:hover`, `:focus-visible`, `:disabled`;
 - визуальная подсветка ошибочных полей через `aria-invalid`;
 - структурированный файл `css/style.css`.
+
+## Макеты Flexbox, Grid и абсолютное позиционирование
+
+- Flexbox: шапка (`.site-header`) выравнивает логотип и меню по горизонтали, список навигации тоже собран через flex.
+- CSS Grid: карточки популярных товаров стоят в сетке `.product-grid` из трёх колонок.
+- Абсолютное позиционирование: бейдж `.product-card__badge` закреплён в правом верхнем углу карточки относительно `.product-card` (`position: relative`).
