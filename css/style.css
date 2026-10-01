@@ -254,6 +254,10 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+.order-form:focus-within .form-field:not(:focus-within) {
+  pointer-events: none;
+}
+
 [aria-invalid="true"] {
   border-color: var(--color-danger);
 }
