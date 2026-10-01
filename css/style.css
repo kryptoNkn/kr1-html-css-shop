@@ -110,12 +110,25 @@ a:focus-visible {
   чтобы оно не растягивалось слишком сильно на широких экранах.
 */
 .site-header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-lg);
   max-width: var(--container-width);
   margin: 0 auto;
+  padding-top: var(--space-md);
+}
+
+.site-header__badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px var(--space-sm);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
 }
 
 /*
@@ -180,9 +193,22 @@ a:focus-visible {
 }
 
 .product-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-md);
+  padding-top: var(--space-lg);
+}
+
+.product-grid__label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px var(--space-sm);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
 }
 
 .product-card {
