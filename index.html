@@ -8,7 +8,7 @@
   <script src="js/main.js" defer></script>
 </head>
 
-<body>
+<body id="top">
   <header>
   <div class="site-header">
     <a class="site-logo" href="index.html">ShopProject</a>
@@ -49,6 +49,7 @@
 
   <div class="product-grid">
   <article class="product-card">
+  <span class="product-card__badge">Хит</span>
   <h3>Товар 1</h3>
   <p>Краткое описание учебного товара.</p>
   <p>Цена: 1000 руб.</p>
@@ -59,6 +60,7 @@
 
 
   <article class="product-card">
+    <span class="product-card__badge">Новинка</span>
     <h3>Товар 2</h3>
     <p>Краткое описание учебного товара.</p>
     <p>Цена: 1500 руб.</p>
@@ -68,6 +70,7 @@
   </article>
 
   <article class="product-card">
+    <span class="product-card__badge">−20%</span>
     <h3>Товар 3</h3>
     <p>Краткое описание учебного товара.</p>
     <p>Цена: 2000 руб.</p>
@@ -185,6 +188,7 @@
 <p class="success-message" id="success-message" hidden>
   Форма успешно отправлена!
 </p>
+  <a class="to-top" href="#top">Наверх</a>
   <footer id="contacts">
   <p>&copy; 2026 Учебный проект. Все права защищены.</p>
   <p>Дисциплина: Фронтенд и бэкенд разработка</p>
