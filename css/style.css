@@ -42,11 +42,18 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 header,
@@ -92,6 +99,7 @@ a:focus-visible {
 }
 
 .button:hover {
+  color: var(--color-white);
   background-color: var(--color-primary-dark);
 }
 
@@ -233,7 +241,8 @@ a:focus-visible {
   font-size: 12px;
 }
 
-.product-card__button {
+.product-card__button,
+.product-card > .button {
   margin-top: auto;
   align-self: flex-start;
 }
