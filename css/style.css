@@ -154,9 +154,11 @@ a:focus-visible {
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: var(--space-md);
   padding: 0;
-  margin: 0;
+  margin: var(--space-md) 0 0;
   list-style: none;
 }
 
@@ -171,12 +173,16 @@ a:focus-visible {
   Оформляем ссылки меню.
 */
 .site-nav__list a {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
   color: var(--color-primary);
   text-decoration: none;
+  border-radius: var(--radius-sm);
 }
 
 .site-nav__list a:hover {
-  text-decoration: underline;
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
 
 /* ===============================
@@ -220,14 +226,19 @@ a:focus-visible {
 }
 
 .product-card {
-  position: relative;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: var(--space-xl) var(--space-md) var(--space-md);
+  gap: var(--space-sm);
+  margin-bottom: 0;
+  padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
+}
+
+.product-card .button {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .product-card__badge {
@@ -385,4 +396,60 @@ html {
 :target {
   outline: 2px dashed var(--color-primary);
   outline-offset: 4px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.catalog-layout {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-areas: "filters products";
+  gap: var(--space-lg);
+}
+
+.catalog-filters {
+  grid-area: filters;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.catalog-products {
+  grid-area: products;
+}
+
+.filters-form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.filters-form fieldset {
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.filters-form legend {
+  font-weight: 700;
+}
+
+.filters-form label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.filters-form input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
 }
