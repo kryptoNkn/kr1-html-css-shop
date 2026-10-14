@@ -56,17 +56,12 @@ main {
   flex: 1 0 auto;
 }
 
-header,
 main,
 footer {
   padding: var(--space-lg);
 }
 
-header {
-  background-color: var(--color-surface);
-}
-
-footer {
+.site-footer {
   background-color: var(--color-surface);
 }
 
@@ -90,17 +85,31 @@ a:focus-visible {
 .button {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  text-decoration: none;
   border: none;
   border-radius: var(--radius-sm);
+  font: inherit;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.button:hover {
+.button--primary {
   color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.button--primary:hover {
   background-color: var(--color-primary-dark);
+}
+
+.button--secondary {
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+}
+
+.button--secondary:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
 
 .button:focus-visible {
@@ -108,7 +117,8 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.button:disabled {
+.button:disabled,
+.button--disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -118,39 +128,21 @@ a:focus-visible {
   чтобы оно не растягивалось слишком сильно на широких экранах.
 */
 .site-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-lg);
+  background-color: var(--color-surface);
+}
+
+.site-header__inner {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding-top: var(--space-md);
+  padding: var(--space-lg);
 }
 
-.site-header__badge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 2px var(--space-sm);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-}
-
-/*
-  Оформляем текстовый логотип.
-*/
-.site-logo {
-  font-weight: bold;
-  text-decoration: none;
+.site-header__logo {
+  font-weight: 700;
   color: var(--color-text);
+  text-decoration: none;
 }
 
-/*
-  Убираем стандартные отступы и маркеры списка навигации.
-*/
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
@@ -162,17 +154,7 @@ a:focus-visible {
   list-style: none;
 }
 
-/*
-  Добавляем расстояние между пунктами меню.
-*/
-.site-nav__list li {
-  margin: 0;
-}
-
-/*
-  Оформляем ссылки меню.
-*/
-.site-nav__list a {
+.site-nav__link {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
   color: var(--color-primary);
@@ -180,7 +162,17 @@ a:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-.site-nav__list a:hover {
+.site-nav__link:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.site-nav__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.site-nav__link--active {
   color: var(--color-white);
   background-color: var(--color-primary);
 }
@@ -202,58 +194,58 @@ a:focus-visible {
   margin: 0 auto var(--space-xl);
 }
 
-.section h2 {
+.section > h2 {
   margin-top: 0;
 }
 
-.product-grid {
-  position: relative;
+.products-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-md);
-  padding-top: var(--space-lg);
-}
-
-.product-grid__label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 2px var(--space-sm);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  margin-bottom: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
 }
 
-.product-card .button {
-  margin-top: auto;
-  align-self: flex-start;
+.product-card:hover {
+  border-color: var(--color-primary);
 }
 
-.product-card__badge {
-  position: absolute;
-  top: var(--space-sm);
-  right: var(--space-sm);
-  padding: 2px var(--space-sm);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
+.product-card--featured {
+  border-color: var(--color-primary);
 }
 
-.product-card__button,
-.product-card > .button {
+.product-card--discount {
+  border-color: var(--color-danger);
+}
+
+.product-card__title {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.product-card__description {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.product-card__price {
+  margin: 0;
+  font-weight: 700;
+}
+
+.product-card--discount .product-card__price {
+  color: var(--color-danger);
+}
+
+.product-card__button {
   margin-top: auto;
   align-self: flex-start;
 }
@@ -276,14 +268,6 @@ a:focus-visible {
 }
 
 
-.product-card:hover {
-  border-color: var(--color-primary);
-}
-
-.product-card h3 {
-  margin-top: 0;
-}
-
 .aside-info {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
@@ -297,7 +281,7 @@ a:focus-visible {
    =============================== */
 
 .order-dialog {
-  width: min(100% - var(--space-xl), 560px);
+  width: min(100% - 32px, 560px);
   padding: var(--space-lg);
   border: none;
   border-radius: var(--radius-lg);
@@ -307,18 +291,22 @@ a:focus-visible {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.form-field {
+.order-dialog__title {
+  margin-top: 0;
+}
+
+.order-form__field {
   margin-bottom: var(--space-md);
 }
 
-.form-field label {
+.order-form__label {
   display: block;
   margin-bottom: var(--space-xs);
 }
 
-.form-field input,
-.form-field select,
-.form-field textarea {
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--color-border);
@@ -326,31 +314,30 @@ a:focus-visible {
   font: inherit;
 }
 
-.form-field input[type="checkbox"] {
+.order-form__input[type="checkbox"] {
   width: auto;
 }
 
-.form-field small {
+.order-form__hint {
   display: block;
   margin-top: var(--space-xs);
   color: var(--color-muted);
 }
 
-.form-field input:hover,
-.form-field select:hover,
-.form-field textarea:hover {
+.order-form__input:hover,
+.order-form__select:hover,
+.order-form__textarea:hover {
   border-color: var(--color-primary);
 }
 
-.form-field input:focus-visible,
-.form-field select:focus-visible,
-.form-field textarea:focus-visible,
-.form-actions button:focus-visible {
+.order-form__input:focus-visible,
+.order-form__select:focus-visible,
+.order-form__textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
-.order-form:focus-within .form-field:not(:focus-within) {
+.order-form:focus-within .order-form__field:not(:focus-within) {
   opacity: 0.45;
   pointer-events: none;
 }
@@ -359,9 +346,9 @@ a:focus-visible {
   border-color: var(--color-danger);
 }
 
-.form-actions {
+.order-form__actions {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   margin-top: var(--space-lg);
 }
 
@@ -380,11 +367,11 @@ a:focus-visible {
   color: var(--color-muted);
 }
 
-.breadcrumbs a {
+.breadcrumbs__link {
   color: var(--color-primary);
 }
 
-.breadcrumbs span::before {
+.breadcrumbs__current::before {
   content: " / ";
   color: var(--color-muted);
 }
@@ -396,12 +383,6 @@ html {
 :target {
   outline: 2px dashed var(--color-primary);
   outline-offset: 4px;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
 }
 
 .catalog-layout {
@@ -425,28 +406,28 @@ html {
   grid-area: products;
 }
 
-.filters-form {
+.catalog-filters__form {
   display: grid;
   gap: var(--space-md);
 }
 
-.filters-form fieldset {
+.catalog-filters__group {
   margin: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
 
-.filters-form legend {
+.catalog-filters__legend {
   font-weight: 700;
 }
 
-.filters-form label {
+.catalog-filters__label {
   display: block;
   margin-bottom: var(--space-sm);
 }
 
-.filters-form input[type="number"] {
+.catalog-filters__input[type="number"] {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--color-border);
