@@ -3,72 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Контактная информация учебного интернет-магазина.">
-  <title>Контакты — Учебный интернет-магазин</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Контакты учебного магазина ShopProject: телефон, e-mail и ссылки на формы обращения.">
+  <title>Контакты — ShopProject</title>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Учебный интернет-магазин">
-  <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="ShopProject">
+  <meta property="og:title" content="Контакты — ShopProject">
+  <meta property="og:description" content="Контакты учебного магазина ShopProject: телефон, e-mail и ссылки на формы обращения.">
+  <meta property="og:url" content="https://kryptoNkn.github.io/kr1-html-css-shop/contacts.html">
   <meta property="og:image" content="https://kryptoNkn.github.io/kr1-html-css-shop/images/preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ShopProject — учебный интернет-магазин">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page" id="top">
+  <a class="skip-link" href="#main-content">К содержимому</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
-  
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html">Главная</a>
-          </li>
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="catalog.html">Каталог</a>
-          </li>
-          <li class="site-nav__item">
-            <a class="site-nav__link site-nav__link--active" href="contacts.html">Контакты</a>
-          </li>
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html#popular">
-              Популярные товары
-            </a>
-          </li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="product.html">Товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  
-
-  <main>
+  <main class="page__main" id="main-content" tabindex="-1">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Контакты</span>
+      <span class="breadcrumbs__current" aria-current="page">Контакты</span>
     </nav>
-
     <section class="section">
-      <h1>Контакты</h1>
-      <p>
-        Здесь размещается контактная информация учебного интернет-магазина.
-      </p>
-
-      <ul>
-        <li>Телефон: +7 (900) 000-00-00</li>
-        <li>E-mail: info@example.com</li>
-        <li>Адрес: г. Москва, учебный проект</li>
-      </ul>
+      <h1 class="section__heading">Контакты</h1>
+      <p>Демонстрационные контактные данные учебного интернет-магазина ShopProject.</p>
+      <address class="contact-details">
+        <ul class="contact-details__list">
+          <li class="contact-details__item">Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+          <li class="contact-details__item">E-mail: <a href="mailto:info@example.com">info@example.com</a></li>
+          <li class="contact-details__item">Адрес: г. Москва, учебный проект</li>
+        </ul>
+      </address>
     </section>
-
     <section class="section" id="feedback">
-      <h2>Обратная связь</h2>
-      <p>
-        Для отправки заявки используйте форму в модальном окне на главной странице.
-      </p>
-      <a class="button button--primary" href="index.html#contacts">Перейти к форме</a>
+      <h2 class="section__title">Обратная связь</h2>
+      <p>Откройте отдельную форму заявки или воспользуйтесь модальным окном на главной странице.</p>
+      <div class="action-list">
+        <a class="button button--primary" href="order.html">Перейти к форме</a>
+        <a class="button button--secondary" href="index.html#contacts">Форма на главной</a>
+      </div>
     </section>
+    <aside class="aside-info">
+      <h2 class="aside-info__title">Выбираете товар?</h2>
+      <p>Посмотрите <a href="catalog.html">каталог</a>,
+        <a href="product.html">характеристики</a> или
+        <a href="index.html#reviews">примеры отзывов</a>.</p>
+    </aside>
   </main>
-
   <footer class="site-footer">
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="site-footer__inner">
+      <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+      <p><a href="contacts.html">Контактная информация</a></p>
+    </div>
   </footer>
+  <a class="back-to-top" href="#top" aria-label="Наверх страницы">↑ Наверх</a>
+
 </body>
 </html>

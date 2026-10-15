@@ -3,122 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог товаров учебного интернет-магазина.">
-  <title>Каталог товаров — Учебный интернет-магазин</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Чайник, плед и ваза: цены, категории, изображения и ссылки на подробные характеристики.">
+  <title>Каталог товаров — ShopProject</title>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Учебный интернет-магазин">
-  <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="ShopProject">
+  <meta property="og:title" content="Каталог товаров — ShopProject">
+  <meta property="og:description" content="Чайник, плед и ваза: цены, категории, изображения и ссылки на подробные характеристики.">
+  <meta property="og:url" content="https://kryptoNkn.github.io/kr1-html-css-shop/catalog.html">
   <meta property="og:image" content="https://kryptoNkn.github.io/kr1-html-css-shop/images/preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ShopProject — учебный интернет-магазин">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page" id="top">
+  <a class="skip-link" href="#main-content">К содержимому</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
-
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html">Главная</a>
-          </li>
-          <li class="site-nav__item">
-            <a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a>
-          </li>
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="contacts.html">Контакты</a>
-          </li>
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
-          </li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="product.html">Товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <main>
+  <main class="page__main" id="main-content" tabindex="-1">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Каталог</span>
+      <span class="breadcrumbs__current" aria-current="page">Каталог</span>
     </nav>
-
     <section class="section">
-      <h1>Каталог товаров</h1>
-      <p>
-        На этой странице представлен учебный каталог товаров.
-        Слева можно выбрать категорию и диапазон цены, справа — список товаров.
-      </p>
+      <h1 class="section__heading">Каталог товаров</h1>
+      <p>Три вещи для дома: посуда, текстиль и декор.
+        Откройте карточку для просмотра характеристик или сразу перейдите к заявке.</p>
     </section>
-
-    <section class="catalog-layout">
-      <aside class="catalog-filters">
-        <h2>Фильтры</h2>
-
-        <form class="catalog-filters__form" action="#" method="get">
+    <div class="catalog-layout">
+      <aside class="catalog-filters" aria-labelledby="filters-title">
+        <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
+        <p id="filters-note" class="catalog-filters__note">
+          Учебный макет фильтров. Фильтрация товаров пока недоступна.
+        </p>
+        <form class="catalog-filters__form" action="catalog.html" method="get" aria-describedby="filters-note">
           <fieldset class="catalog-filters__group">
             <legend class="catalog-filters__legend">Категория</legend>
-
             <label class="catalog-filters__label">
-              <input class="catalog-filters__input" type="checkbox" name="category" value="all">
-              Все товары
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="tableware">
+              Посуда
             </label>
-
             <label class="catalog-filters__label">
-              <input class="catalog-filters__input" type="checkbox" name="category" value="popular">
-              Популярные
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="textile">
+              Текстиль
             </label>
-
             <label class="catalog-filters__label">
-              <input class="catalog-filters__input" type="checkbox" name="category" value="new">
-              Новинки
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="decor">
+              Декор
             </label>
           </fieldset>
 
           <fieldset class="catalog-filters__group">
-            <legend class="catalog-filters__legend">Цена</legend>
-
+            <legend class="catalog-filters__legend">Цена, руб.</legend>
             <label class="catalog-filters__label" for="price-from">От</label>
             <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
-
-            <label class="catalog-filters__label" for="price-to">До</label>
+            <label class="catalog-filters__label catalog-filters__label--range-end" for="price-to">До</label>
             <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
           </fieldset>
 
-          <button class="button button--primary" type="submit">Применить</button>
+          <button class="button button--primary catalog-filters__button" type="submit" disabled>Применить</button>
         </form>
       </aside>
-
-      <section class="catalog-products">
-        <h2>Список товаров</h2>
-
+      <section class="catalog-products" aria-labelledby="products-title">
+        <h2 class="catalog-products__title" id="products-title">Выберите товар</h2>
         <div class="products-grid">
-          <article class="product-card product-card--featured">
-            <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
-            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
-          </article>
+        <article class="product-card product-card--featured">
+          <span class="product-card__badge">Хит</span>
+          <a class="product-card__image-link" href="product.html#kettle" aria-label="Подробнее: Чайник «Берёза»">
+            <img class="product-card__image" src="images/kettle.svg" alt="Белый заварочный чайник с синей крышкой" width="640" height="400" loading="lazy" decoding="async">
+          </a>
+          <p class="product-card__category">Посуда</p>
+          <h3 class="product-card__title"><a class="product-card__title-link" href="product.html#kettle">Чайник «Берёза»</a></h3>
+          <p class="product-card__description">Керамический чайник на 1 литр для заваривания чая.</p>
+          <p class="product-card__price">Цена: 1200 руб.</p>
+          <a class="button button--primary product-card__button" href="order.html?product=kettle">Оставить заявку</a>
+        </article>
 
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
-            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
-          </article>
+        <article class="product-card product-card--new">
+          <span class="product-card__badge">Новинка</span>
+          <a class="product-card__image-link" href="product.html#blanket" aria-label="Подробнее: Плед «Туман»">
+            <img class="product-card__image" src="images/blanket.svg" alt="Сложенный серо-голубой плед" width="640" height="400" loading="lazy" decoding="async">
+          </a>
+          <p class="product-card__category">Текстиль</p>
+          <h3 class="product-card__title"><a class="product-card__title-link" href="product.html#blanket">Плед «Туман»</a></h3>
+          <p class="product-card__description">Мягкий плед 130 × 170 см для кресла или дивана.</p>
+          <p class="product-card__price">Цена: 2400 руб.</p>
+          <a class="button button--primary product-card__button" href="order.html?product=blanket">Оставить заявку</a>
+        </article>
 
-          <article class="product-card product-card--discount">
-            <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2000 руб.</p>
-            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
-          </article>
+        <article class="product-card">
+
+          <a class="product-card__image-link" href="product.html#vase" aria-label="Подробнее: Ваза «Река»">
+            <img class="product-card__image" src="images/vase.svg" alt="Высокая синяя ваза с узким горлом" width="640" height="400" loading="lazy" decoding="async">
+          </a>
+          <p class="product-card__category">Декор</p>
+          <h3 class="product-card__title"><a class="product-card__title-link" href="product.html#vase">Ваза «Река»</a></h3>
+          <p class="product-card__description">Стеклянная ваза высотой 25 см для сухоцветов.</p>
+          <p class="product-card__price">Цена: 800 руб.</p>
+          <a class="button button--primary product-card__button" href="order.html?product=vase">Оставить заявку</a>
+        </article>
         </div>
       </section>
-    </section>
+    </div>
+    <aside class="aside-info">
+      <h2 class="aside-info__title">Нужна помощь с выбором?</h2>
+      <p><a href="order.html">Оставьте общий вопрос</a> или посмотрите
+        <a href="index.html#reviews">примеры отзывов</a>. Фильтры пока представлены статическим макетом.</p>
+    </aside>
   </main>
-
   <footer class="site-footer">
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="site-footer__inner">
+      <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+      <p><a href="contacts.html">Контактная информация</a></p>
+    </div>
   </footer>
+  <a class="back-to-top" href="#top" aria-label="Наверх страницы">↑ Наверх</a>
+
 </body>
 </html>
