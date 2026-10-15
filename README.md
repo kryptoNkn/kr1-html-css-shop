@@ -94,9 +94,8 @@ GitHub Pages: https://kryptonkn.github.io/kr1-html-css-shop/
 ## Макеты Flexbox, Grid и абсолютное позиционирование
 
 - Flexbox: шапка (`.site-header`) выравнивает логотип и меню по горизонтали, список навигации тоже собран через flex.
-- CSS Grid: карточки популярных товаров стоят в сетке `.product-grid` из трёх колонок.
+- CSS Grid: карточки популярных товаров и каталога стоят в сетке `.products-grid` из трёх колонок.
 - `relative` + `absolute` в шапке: `.site-header` — точка отсчёта, бейдж `.site-header__badge` стоит в левом верхнем углу.
-- `relative` + `absolute` в сетке товаров: `.product-grid` — точка отсчёта, подпись `.product-grid__label` стоит в правом верхнем углу сетки.
 - `fixed`: ссылка «Наверх» (`.to-top`) закреплена в правом нижнем углу окна.
 
 ## Использование Flexbox и Grid

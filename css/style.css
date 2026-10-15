@@ -206,25 +206,6 @@ a:focus-visible {
   margin-top: 0;
 }
 
-.product-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-md);
-  padding-top: var(--space-lg);
-}
-
-.product-grid__label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 2px var(--space-sm);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-}
-
 .product-card {
   display: flex;
   flex-direction: column;
