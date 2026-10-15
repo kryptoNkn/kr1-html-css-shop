@@ -63,7 +63,11 @@ footer {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
 }
 
 footer {
@@ -372,6 +376,25 @@ a:focus-visible {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 140px;
+}
+
+@media (max-width: 1099px) {
+  html {
+    scroll-padding-top: 200px;
+  }
+}
+
+@media (max-width: 700px) {
+  html {
+    scroll-padding-top: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: 380px;
+  }
 }
 
 :target {
