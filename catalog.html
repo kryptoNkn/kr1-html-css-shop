@@ -50,9 +50,10 @@
       <aside class="catalog-filters" aria-labelledby="filters-title">
         <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
         <p id="filters-note" class="catalog-filters__note">
-          Отметьте категории и задайте диапазон цены. Если категория не выбрана, учитывается только цена.
+          Отметьте категории, задайте цену и порядок. Список обновляется сразу.
+          Если категория не выбрана, учитывается только цена.
         </p>
-        <form class="catalog-filters__form" action="catalog.html" method="get" aria-describedby="filters-note">
+        <form class="catalog-filters__form" action="catalog.html" method="get" aria-describedby="filters-note" aria-controls="catalog-status">
           <fieldset class="catalog-filters__group">
             <legend class="catalog-filters__legend">Категория</legend>
             <label class="catalog-filters__label">
@@ -72,16 +73,32 @@
           <fieldset class="catalog-filters__group">
             <legend class="catalog-filters__legend">Цена, руб.</legend>
             <label class="catalog-filters__label" for="price-from">От</label>
-            <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
+            <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="price-error">
             <label class="catalog-filters__label catalog-filters__label--range-end" for="price-to">До</label>
-            <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+            <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" step="1" inputmode="numeric" placeholder="5000" aria-describedby="price-error">
+            <p class="catalog-filters__error" id="price-error" hidden>Минимальная цена больше максимальной.</p>
           </fieldset>
 
-          <button class="button button--primary catalog-filters__button" type="submit">Применить</button>
+          <fieldset class="catalog-filters__group">
+            <legend class="catalog-filters__legend">Сортировка</legend>
+            <label class="catalog-filters__label" for="catalog-sort">Порядок</label>
+            <select class="catalog-filters__input" id="catalog-sort" name="sort">
+              <option value="default">Как в каталоге</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="name">По названию</option>
+            </select>
+          </fieldset>
+
+          <div class="catalog-filters__actions">
+            <button class="button button--primary catalog-filters__button" type="submit">Применить</button>
+            <button class="button button--secondary catalog-filters__button" type="reset">Сбросить</button>
+          </div>
         </form>
       </aside>
       <section class="catalog-products" aria-labelledby="products-title">
         <h2 class="catalog-products__title" id="products-title">Выберите товар</h2>
+        <p class="catalog-products__status" id="catalog-status" role="status">Показано 3 из 3</p>
         <div class="products-grid">
         <article class="product-card product-card--featured" data-category="tableware" data-price="1200">
           <span class="product-card__badge">Хит</span>
@@ -119,7 +136,6 @@
           <a class="button button--primary product-card__button" href="order.html?product=vase">Оставить заявку</a>
         </article>
         </div>
-        <p class="catalog-products__empty" id="catalog-empty" hidden>По выбранным условиям товаров нет.</p>
       </section>
     </div>
     <aside class="aside-info">

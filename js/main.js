@@ -107,35 +107,118 @@ if (orderForm) {
 }
 
 const catalogForm = document.querySelector('.catalog-filters__form');
-const catalogCards = document.querySelectorAll('.catalog-products .product-card');
-const catalogEmpty = document.getElementById('catalog-empty');
+const catalogGrid = document.querySelector('.catalog-products .products-grid');
+const catalogCards = catalogGrid
+  ? Array.from(catalogGrid.querySelectorAll('.product-card'))
+  : [];
+const catalogStatus = document.getElementById('catalog-status');
 
-if (catalogForm && catalogCards.length) {
-  catalogForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+function catalogTitle(card) {
+  const title = card.querySelector('.product-card__title');
+  return title ? title.textContent.trim() : '';
+}
 
-    const categories = Array.from(catalogForm.querySelectorAll('input[name="category"]:checked'))
-      .map((input) => input.value);
-    const priceFrom = catalogForm.elements['price-from'].value;
-    const priceTo = catalogForm.elements['price-to'].value;
-    const minPrice = priceFrom === '' ? null : Number(priceFrom);
-    const maxPrice = priceTo === '' ? null : Number(priceTo);
-    let visibleCount = 0;
+function applyCatalogFilters() {
+  const categories = Array.from(catalogForm.querySelectorAll('input[name="category"]:checked'))
+    .map((input) => input.value);
+  const priceFrom = catalogForm.elements['price-from'].value.trim();
+  const priceTo = catalogForm.elements['price-to'].value.trim();
+  const minPrice = priceFrom === '' ? null : Number(priceFrom);
+  const maxPrice = priceTo === '' ? null : Number(priceTo);
+  const rangeInvalid = minPrice !== null && maxPrice !== null && minPrice > maxPrice;
+  const priceError = document.getElementById('price-error');
+  const sort = catalogForm.elements.sort.value;
+  const sortedCards = catalogCards.slice();
 
-    catalogCards.forEach((card) => {
-      const price = Number(card.dataset.price);
-      const categoryMatches = categories.length === 0 || categories.includes(card.dataset.category);
-      const priceMatches = (minPrice === null || price >= minPrice)
-        && (maxPrice === null || price <= maxPrice);
-      const visible = categoryMatches && priceMatches;
-      card.hidden = !visible;
-      if (visible) {
-        visibleCount += 1;
-      }
-    });
+  catalogForm.elements['price-from'].classList.toggle('catalog-filters__input--error', rangeInvalid);
+  catalogForm.elements['price-to'].classList.toggle('catalog-filters__input--error', rangeInvalid);
+  catalogForm.elements['price-from'].toggleAttribute('aria-invalid', rangeInvalid);
+  catalogForm.elements['price-to'].toggleAttribute('aria-invalid', rangeInvalid);
+  if (priceError) {
+    priceError.hidden = !rangeInvalid;
+  }
 
-    if (catalogEmpty) {
-      catalogEmpty.hidden = visibleCount > 0;
+  if (sort === 'price-asc') {
+    sortedCards.sort((left, right) => Number(left.dataset.price) - Number(right.dataset.price));
+  } else if (sort === 'price-desc') {
+    sortedCards.sort((left, right) => Number(right.dataset.price) - Number(left.dataset.price));
+  } else if (sort === 'name') {
+    sortedCards.sort((left, right) => catalogTitle(left).localeCompare(catalogTitle(right), 'ru'));
+  }
+
+  sortedCards.forEach((card) => {
+    catalogGrid.appendChild(card);
+  });
+
+  let visibleCount = 0;
+  catalogCards.forEach((card) => {
+    const price = Number(card.dataset.price);
+    const categoryMatches = categories.length === 0 || categories.includes(card.dataset.category);
+    const priceMatches = rangeInvalid
+      || ((minPrice === null || price >= minPrice) && (maxPrice === null || price <= maxPrice));
+    const visible = categoryMatches && priceMatches;
+    card.hidden = !visible;
+    if (visible) {
+      visibleCount += 1;
     }
   });
+
+  if (catalogStatus) {
+    catalogStatus.textContent = rangeInvalid
+      ? 'Укажите корректный диапазон цены.'
+      : (visibleCount
+        ? `Показано ${visibleCount} из ${catalogCards.length}`
+        : 'По выбранным условиям товаров нет.');
+  }
+
+  const params = new URLSearchParams();
+  categories.forEach((category) => {
+    params.append('category', category);
+  });
+  if (priceFrom !== '') {
+    params.set('price-from', priceFrom);
+  }
+  if (priceTo !== '') {
+    params.set('price-to', priceTo);
+  }
+  if (sort !== 'default') {
+    params.set('sort', sort);
+  }
+  const query = params.toString();
+  const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+  window.history.replaceState(null, '', nextUrl);
+}
+
+if (catalogForm && catalogCards.length && catalogGrid) {
+  const initialParams = new URLSearchParams(window.location.search);
+  const knownCategories = new Set(initialParams.getAll('category'));
+  catalogForm.querySelectorAll('input[name="category"]').forEach((checkbox) => {
+    checkbox.checked = knownCategories.has(checkbox.value);
+  });
+  const initialFrom = initialParams.get('price-from');
+  const initialTo = initialParams.get('price-to');
+  const initialSort = initialParams.get('sort');
+  if (initialFrom !== null) {
+    catalogForm.elements['price-from'].value = initialFrom;
+  }
+  if (initialTo !== null) {
+    catalogForm.elements['price-to'].value = initialTo;
+  }
+  if (initialSort && Array.from(catalogForm.elements.sort.options).some((option) => option.value === initialSort)) {
+    catalogForm.elements.sort.value = initialSort;
+  }
+
+  catalogForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    applyCatalogFilters();
+  });
+  catalogForm.addEventListener('input', applyCatalogFilters);
+  catalogForm.addEventListener('change', applyCatalogFilters);
+  catalogForm.addEventListener('reset', () => {
+    window.setTimeout(applyCatalogFilters, 0);
+  });
+
+  if (window.location.search) {
+    applyCatalogFilters();
+  }
 }

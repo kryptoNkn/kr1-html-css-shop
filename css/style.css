@@ -206,6 +206,10 @@ a:focus-visible {
   background-color: var(--color-bg);
 }
 
+.product-card[hidden] {
+  display: none;
+}
+
 .product-card:hover,
 .product-card--featured {
   border-color: var(--color-primary);
@@ -251,12 +255,10 @@ a:focus-visible {
   min-width: 0;
 }
 
-.catalog-products .products-grid {
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.catalog-products__empty {
-  margin: 0;
+.catalog-products__status {
+  margin: 0 0 var(--space-md);
+  color: var(--color-muted);
+  font-size: 14px;
 }
 
 .catalog-filters__title,
@@ -287,7 +289,9 @@ a:focus-visible {
 }
 
 .catalog-filters__label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
   margin-bottom: var(--space-sm);
 }
 
@@ -311,8 +315,20 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.catalog-filters__button {
-  justify-self: start;
+.catalog-filters__input--error {
+  border-color: var(--color-danger);
+}
+
+.catalog-filters__error {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-danger);
+  font-size: 14px;
+}
+
+.catalog-filters__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
 }
 
 /* 7. Общий блок кнопки и его варианты. */
