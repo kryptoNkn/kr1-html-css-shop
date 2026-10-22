@@ -21,6 +21,12 @@ function setFieldInvalid(field, invalid) {
   } else {
     field.removeAttribute('aria-invalid');
   }
+
+  const errorId = field.getAttribute('aria-errormessage');
+  const error = errorId ? document.getElementById(errorId) : null;
+  if (error) {
+    error.hidden = !invalid;
+  }
 }
 
 function clearErrors() {
@@ -90,6 +96,10 @@ if (orderForm) {
           setFieldInvalid(field, !field.validity.valid);
         }
       });
+      const firstInvalid = orderForm.querySelector('[aria-invalid="true"]');
+      if (firstInvalid) {
+        firstInvalid.focus();
+      }
       orderForm.reportValidity();
       return;
     }

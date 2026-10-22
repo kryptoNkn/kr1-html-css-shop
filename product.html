@@ -31,6 +31,8 @@
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#reviews">Отзывы</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#faq">Вопросы</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
@@ -48,6 +50,7 @@
         <a class="product-links__link" href="#kettle">Чайник</a>
         <a class="product-links__link" href="#blanket">Плед</a>
         <a class="product-links__link" href="#vase">Ваза</a>
+        <a class="product-links__link" href="#compare">Сравнение</a>
       </nav>
     </section>
     <article class="product-detail" id="kettle" aria-labelledby="kettle-title">
@@ -111,6 +114,7 @@
       </figure>
       <div class="product-detail__content">
         <p class="product-detail__category">Декор</p>
+        <p class="promo-banner">Акция: ваза «Река» в учебном каталоге</p>
         <h2 class="product-detail__title" id="vase-title">Ваза «Река»</h2>
         <p>Стеклянная ваза высотой 25 см для сухоцветов.</p>
         <table class="product-table">
@@ -130,6 +134,67 @@
         <a class="button button--primary" href="order.html?product=vase">Оставить заявку на товар</a>
       </div>
     </article>
+    <section class="section" id="compare" aria-labelledby="compare-title">
+      <h2 class="section__title" id="compare-title">Сравнение характеристик</h2>
+      <p>Общая таблица помогает сопоставить материал, размер, уход и цену трёх учебных товаров.</p>
+      <div class="compare-table-wrap">
+        <table class="product-table compare-table">
+          <caption class="product-table__caption">Сравнение чайника «Берёза», пледа «Туман» и вазы «Река»</caption>
+          <thead class="product-table__head">
+            <tr>
+              <th class="product-table__cell" scope="col">Параметр</th>
+              <th class="product-table__cell" scope="col">Чайник «Берёза»</th>
+              <th class="product-table__cell" scope="col">Плед «Туман»</th>
+              <th class="product-table__cell" scope="col">Ваза «Река»</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="product-table__cell product-table__cell--label" scope="row">Категория</th>
+              <td class="product-table__cell">Посуда</td>
+              <td class="product-table__cell">Текстиль</td>
+              <td class="product-table__cell">Декор</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell product-table__cell--label" scope="row">Материал</th>
+              <td class="product-table__cell">Керамика</td>
+              <td class="product-table__cell">Хлопок</td>
+              <td class="product-table__cell">Стекло</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell product-table__cell--label" scope="row">Размер</th>
+              <td class="product-table__cell">Объём 1 л</td>
+              <td class="product-table__cell">130 × 170 см</td>
+              <td class="product-table__cell">Высота 25 см</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell product-table__cell--label" scope="row">Особенность</th>
+              <td class="product-table__cell">Съёмная крышка</td>
+              <td class="product-table__cell">Серо-голубой цвет</td>
+              <td class="product-table__cell">Узкое горло</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell product-table__cell--label" scope="row">Уход</th>
+              <td class="product-table__cell">Ручная мойка</td>
+              <td class="product-table__cell">Стирка при 30 °C</td>
+              <td class="product-table__cell">Протирать мягкой тканью</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell product-table__cell--label" scope="row">Цена</th>
+              <td class="product-table__cell">1200 руб.</td>
+              <td class="product-table__cell">2400 руб.</td>
+              <td class="product-table__cell">800 руб.</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell product-table__cell--label" scope="row">Заявка</th>
+              <td class="product-table__cell"><a href="order.html?product=kettle">Чайник</a></td>
+              <td class="product-table__cell"><a href="order.html?product=blanket">Плед</a></td>
+              <td class="product-table__cell"><a href="order.html?product=vase">Ваза</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
     <aside class="aside-info">
       <h2 class="aside-info__title">Перед заявкой</h2>
       <p>Переход по кнопке подставит товар в форму. Данные остаются в браузере.

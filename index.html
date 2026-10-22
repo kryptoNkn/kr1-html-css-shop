@@ -32,6 +32,8 @@
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#reviews">Отзывы</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#faq">Вопросы</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
@@ -84,8 +86,8 @@
           <button class="button button--primary product-card__button" type="button" data-product="Плед «Туман»">Заказать</button>
         </article>
 
-        <article class="product-card">
-
+        <article class="product-card product-card--promo">
+          <span class="product-card__badge product-card__badge--promo">Акция</span>
           <a class="product-card__image-link" href="product.html#vase" aria-label="Подробнее: Ваза «Река»">
             <img class="product-card__image" src="images/vase.svg" alt="Высокая синяя ваза с узким горлом" width="640" height="400" loading="lazy" decoding="async">
           </a>
@@ -127,6 +129,29 @@
       </div>
     </section>
 
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <h2 class="section__title" id="faq-title">Частые вопросы</h2>
+      <p class="section__description">Короткие ответы о каталоге, характеристиках и учебной заявке.</p>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-item__summary">Можно ли оформить заказ и оплату?</summary>
+          <p class="faq-item__answer">Нет. Форма только проверяет поля в браузере. Данные не уходят на сервер, оплата не выполняется.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__summary">Как сравнить товары?</summary>
+          <p class="faq-item__answer">На странице товаров есть отдельная <a href="product.html#compare">таблица сравнения</a> и характеристики каждой позиции.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__summary">Что обязательно в заявке?</summary>
+          <p class="faq-item__answer">Имя, e-mail, телефон в формате +7 (900) 000-00-00, тема и согласие на обработку данных. Дата и комментарий можно не заполнять.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__summary">Откуда берутся отзывы?</summary>
+          <p class="faq-item__answer">Это учебные примеры. Они показывают карточку отзыва и не описывают реальных покупателей.</p>
+        </details>
+      </div>
+    </section>
+
     <section class="section" id="contacts">
       <h2 class="section__title">Обратная связь</h2>
       <p>Выберите удобный способ: отдельная страница заявки или короткая форма в окне.</p>
@@ -161,7 +186,7 @@
     <input id="selected-product" name="selected-product" type="hidden">
 
     <div class="order-form__field">
-      <label class="order-form__label" for="order-name">Имя</label>
+      <label class="order-form__label" for="order-name">Имя <span class="order-form__required" aria-hidden="true">*</span><span class="visually-hidden">, обязательно</span></label>
       <input class="order-form__input"
         id="order-name"
         name="name"
@@ -169,27 +194,32 @@
         placeholder="Введите ваше имя"
         minlength="2"
         autocomplete="given-name"
+        aria-errormessage="order-name-error"
         required
       >
+      <p class="order-form__error" id="order-name-error" hidden>Укажите имя не короче двух символов.</p>
     </div>
 
     <div class="order-form__field">
-      <label class="order-form__label" for="order-email">E-mail</label>
+      <label class="order-form__label" for="order-email">E-mail <span class="order-form__required" aria-hidden="true">*</span><span class="visually-hidden">, обязательно</span></label>
       <input class="order-form__input"
         id="order-email"
         name="email"
         type="email"
         placeholder="example@mail.ru"
         autocomplete="email"
+        aria-errormessage="order-email-error"
         required
       >
+      <p class="order-form__error" id="order-email-error" hidden>Укажите корректный адрес e-mail.</p>
     </div>
 
     <div class="order-form__field">
-      <label class="order-form__label" for="order-phone">Телефон</label>
+      <label class="order-form__label" for="order-phone">Телефон <span class="order-form__required" aria-hidden="true">*</span><span class="visually-hidden">, обязательно</span></label>
       <input class="order-form__input"
         id="order-phone"
         aria-describedby="order-phone-hint"
+        aria-errormessage="order-phone-error"
         name="phone"
         autocomplete="tel"
         type="tel"
@@ -199,6 +229,7 @@
         required
       >
       <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
+      <p class="order-form__error" id="order-phone-error" hidden>Введите телефон в формате +7 (900) 000-00-00.</p>
     </div>
 
     <div class="order-form__field">
@@ -211,13 +242,14 @@
     </div>
 
     <div class="order-form__field">
-      <label class="order-form__label" for="order-topic">Тема заявки</label>
-      <select class="order-form__select" id="order-topic" name="topic" required>
+      <label class="order-form__label" for="order-topic">Тема заявки <span class="order-form__required" aria-hidden="true">*</span><span class="visually-hidden">, обязательно</span></label>
+      <select class="order-form__select" id="order-topic" name="topic" aria-errormessage="order-topic-error" required>
         <option value="">Выберите тему</option>
         <option value="product">Заказ товара</option>
         <option value="consultation">Консультация</option>
         <option value="delivery">Доставка</option>
       </select>
+      <p class="order-form__error" id="order-topic-error" hidden>Выберите тему заявки.</p>
     </div>
 
     <div class="order-form__field">
@@ -236,10 +268,12 @@
           id="order-agreement"
           name="agreement"
           type="checkbox"
+          aria-errormessage="order-agreement-error"
           required
         >
-        Я согласен на обработку данных
+        Я согласен на обработку данных <span class="order-form__required" aria-hidden="true">*</span><span class="visually-hidden">, обязательно</span>
       </label>
+      <p class="order-form__error" id="order-agreement-error" hidden>Подтвердите согласие на обработку данных.</p>
     </div>
 
     <div class="order-form__actions">
