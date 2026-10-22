@@ -234,7 +234,11 @@ a:focus-visible {
 }
 
 .catalog-filters {
+  position: sticky;
+  top: 104px;
+  z-index: 5;
   grid-area: filters;
+  align-self: start;
   min-width: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
@@ -245,6 +249,14 @@ a:focus-visible {
 .catalog-products {
   grid-area: products;
   min-width: 0;
+}
+
+.catalog-products .products-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.catalog-products__empty {
+  margin: 0;
 }
 
 .catalog-filters__title,
@@ -732,6 +744,12 @@ a:focus-visible {
 }
 
 /* 11. Раскладка на узких экранах и уменьшение движения. */
+@media (max-width: 1199px) {
+  .catalog-filters {
+    top: 192px;
+  }
+}
+
 @media (max-width: 800px) {
   .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -748,7 +766,8 @@ a:focus-visible {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .site-header {
+  .site-header,
+  .catalog-filters {
     position: static;
   }
 

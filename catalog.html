@@ -50,7 +50,7 @@
       <aside class="catalog-filters" aria-labelledby="filters-title">
         <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
         <p id="filters-note" class="catalog-filters__note">
-          Учебный макет фильтров. Фильтрация товаров пока недоступна.
+          Отметьте категории и задайте диапазон цены. Если категория не выбрана, учитывается только цена.
         </p>
         <form class="catalog-filters__form" action="catalog.html" method="get" aria-describedby="filters-note">
           <fieldset class="catalog-filters__group">
@@ -77,13 +77,13 @@
             <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
           </fieldset>
 
-          <button class="button button--primary catalog-filters__button" type="submit" disabled>Применить</button>
+          <button class="button button--primary catalog-filters__button" type="submit">Применить</button>
         </form>
       </aside>
       <section class="catalog-products" aria-labelledby="products-title">
         <h2 class="catalog-products__title" id="products-title">Выберите товар</h2>
         <div class="products-grid">
-        <article class="product-card product-card--featured">
+        <article class="product-card product-card--featured" data-category="tableware" data-price="1200">
           <span class="product-card__badge">Хит</span>
           <a class="product-card__image-link" href="product.html#kettle" aria-label="Подробнее: Чайник «Берёза»">
             <img class="product-card__image" src="images/kettle.svg" alt="Белый заварочный чайник с синей крышкой" width="640" height="400" loading="lazy" decoding="async">
@@ -95,7 +95,7 @@
           <a class="button button--primary product-card__button" href="order.html?product=kettle">Оставить заявку</a>
         </article>
 
-        <article class="product-card product-card--new">
+        <article class="product-card product-card--new" data-category="textile" data-price="2400">
           <span class="product-card__badge">Новинка</span>
           <a class="product-card__image-link" href="product.html#blanket" aria-label="Подробнее: Плед «Туман»">
             <img class="product-card__image" src="images/blanket.svg" alt="Сложенный серо-голубой плед" width="640" height="400" loading="lazy" decoding="async">
@@ -107,7 +107,7 @@
           <a class="button button--primary product-card__button" href="order.html?product=blanket">Оставить заявку</a>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-category="decor" data-price="800">
 
           <a class="product-card__image-link" href="product.html#vase" aria-label="Подробнее: Ваза «Река»">
             <img class="product-card__image" src="images/vase.svg" alt="Высокая синяя ваза с узким горлом" width="640" height="400" loading="lazy" decoding="async">
@@ -119,12 +119,13 @@
           <a class="button button--primary product-card__button" href="order.html?product=vase">Оставить заявку</a>
         </article>
         </div>
+        <p class="catalog-products__empty" id="catalog-empty" hidden>По выбранным условиям товаров нет.</p>
       </section>
     </div>
     <aside class="aside-info">
       <h2 class="aside-info__title">Нужна помощь с выбором?</h2>
       <p><a href="order.html">Оставьте общий вопрос</a> или посмотрите
-        <a href="index.html#reviews">примеры отзывов</a>. Фильтры пока представлены статическим макетом.</p>
+        <a href="index.html#reviews">примеры отзывов</a>.</p>
     </aside>
   </main>
   <footer class="site-footer">
@@ -135,6 +136,6 @@
     </div>
   </footer>
   <a class="back-to-top" href="#top" aria-label="Наверх страницы">↑ Наверх</a>
-
+  <script src="js/main.js"></script>
 </body>
 </html>

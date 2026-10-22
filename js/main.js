@@ -105,3 +105,37 @@ if (orderForm) {
     }
   });
 }
+
+const catalogForm = document.querySelector('.catalog-filters__form');
+const catalogCards = document.querySelectorAll('.catalog-products .product-card');
+const catalogEmpty = document.getElementById('catalog-empty');
+
+if (catalogForm && catalogCards.length) {
+  catalogForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const categories = Array.from(catalogForm.querySelectorAll('input[name="category"]:checked'))
+      .map((input) => input.value);
+    const priceFrom = catalogForm.elements['price-from'].value;
+    const priceTo = catalogForm.elements['price-to'].value;
+    const minPrice = priceFrom === '' ? null : Number(priceFrom);
+    const maxPrice = priceTo === '' ? null : Number(priceTo);
+    let visibleCount = 0;
+
+    catalogCards.forEach((card) => {
+      const price = Number(card.dataset.price);
+      const categoryMatches = categories.length === 0 || categories.includes(card.dataset.category);
+      const priceMatches = (minPrice === null || price >= minPrice)
+        && (maxPrice === null || price <= maxPrice);
+      const visible = categoryMatches && priceMatches;
+      card.hidden = !visible;
+      if (visible) {
+        visibleCount += 1;
+      }
+    });
+
+    if (catalogEmpty) {
+      catalogEmpty.hidden = visibleCount > 0;
+    }
+  });
+}
