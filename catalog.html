@@ -16,6 +16,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ShopProject — учебный интернет-магазин">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body class="page" id="top">
   <a class="skip-link" href="#main-content">К содержимому</a>
@@ -105,7 +106,19 @@
         <article class="product-card product-card--featured" data-category="tableware" data-price="1200">
           <span class="product-card__badge">Хит</span>
           <a class="product-card__image-link" href="product.html#kettle" aria-label="Подробнее: Чайник «Берёза»">
-            <img class="product-card__image" src="images/kettle.svg" alt="Белый заварочный чайник с синей крышкой" width="640" height="400" loading="lazy" decoding="async">
+            <img class="product-card__image"
+              src="images/kettle-640.svg"
+              srcset="images/kettle-480.svg 480w,
+                      images/kettle-640.svg 640w,
+                      images/kettle-960.svg 960w"
+              sizes="(max-width: 639px) 100vw,
+                     (max-width: 1023px) 50vw,
+                     33vw"
+              alt="Белый заварочный чайник с синей крышкой"
+              width="640"
+              height="480"
+              loading="lazy"
+              decoding="async">
           </a>
           <p class="product-card__category">Посуда</p>
           <h3 class="product-card__title"><a class="product-card__title-link" href="product.html#kettle">Чайник «Берёза»</a></h3>

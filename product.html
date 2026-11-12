@@ -16,6 +16,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ShopProject — учебный интернет-магазин">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body class="page" id="top">
   <a class="skip-link" href="#main-content">К содержимому</a>
@@ -55,13 +56,24 @@
     </section>
     <article class="product-detail" id="kettle" aria-labelledby="kettle-title">
       <figure class="product-detail__figure">
-        <img class="product-detail__image" src="images/kettle.svg" alt="Белый заварочный чайник с синей крышкой" width="640" height="400" fetchpriority="high" decoding="async">
+        <img class="product-detail__image"
+          src="images/kettle-640.svg"
+          srcset="images/kettle-480.svg 480w,
+                  images/kettle-640.svg 640w,
+                  images/kettle-960.svg 960w"
+          sizes="(max-width: 899px) 100vw, 50vw"
+          alt="Белый заварочный чайник с синей крышкой"
+          width="640"
+          height="480"
+          fetchpriority="high"
+          decoding="async">
         <figcaption class="product-detail__caption">Иллюстрация учебного товара</figcaption>
       </figure>
       <div class="product-detail__content">
         <p class="product-detail__category">Посуда</p>
         <h2 class="product-detail__title" id="kettle-title">Чайник «Берёза»</h2>
         <p>Керамический чайник на 1 литр для заваривания чая.</p>
+        <div class="table-wrapper">
         <table class="product-table">
           <caption class="product-table__caption">Характеристики: Чайник «Берёза»</caption>
           <thead class="product-table__head"><tr><th class="product-table__cell" scope="col">Параметр</th><th class="product-table__cell" scope="col">Значение</th></tr></thead>
@@ -75,6 +87,7 @@
                 <tr><th class="product-table__cell product-table__cell--label" scope="row">Наличие</th><td class="product-table__cell">Демонстрационный товар</td></tr>
           </tbody>
         </table>
+        </div>
         <p class="product-detail__price">1200 руб.</p>
         <a class="button button--primary" href="order.html?product=kettle">Оставить заявку на товар</a>
       </div>
@@ -89,6 +102,7 @@
         <p class="product-detail__category">Текстиль</p>
         <h2 class="product-detail__title" id="blanket-title">Плед «Туман»</h2>
         <p>Мягкий плед 130 × 170 см для кресла или дивана.</p>
+        <div class="table-wrapper">
         <table class="product-table">
           <caption class="product-table__caption">Характеристики: Плед «Туман»</caption>
           <thead class="product-table__head"><tr><th class="product-table__cell" scope="col">Параметр</th><th class="product-table__cell" scope="col">Значение</th></tr></thead>
@@ -102,6 +116,7 @@
                 <tr><th class="product-table__cell product-table__cell--label" scope="row">Наличие</th><td class="product-table__cell">Демонстрационный товар</td></tr>
           </tbody>
         </table>
+        </div>
         <p class="product-detail__price">2400 руб.</p>
         <a class="button button--primary" href="order.html?product=blanket">Оставить заявку на товар</a>
       </div>
@@ -117,6 +132,7 @@
         <p class="promo-banner">Акция: ваза «Река» в учебном каталоге</p>
         <h2 class="product-detail__title" id="vase-title">Ваза «Река»</h2>
         <p>Стеклянная ваза высотой 25 см для сухоцветов.</p>
+        <div class="table-wrapper">
         <table class="product-table">
           <caption class="product-table__caption">Характеристики: Ваза «Река»</caption>
           <thead class="product-table__head"><tr><th class="product-table__cell" scope="col">Параметр</th><th class="product-table__cell" scope="col">Значение</th></tr></thead>
@@ -130,6 +146,7 @@
                 <tr><th class="product-table__cell product-table__cell--label" scope="row">Наличие</th><td class="product-table__cell">Демонстрационный товар</td></tr>
           </tbody>
         </table>
+        </div>
         <p class="product-detail__price">800 руб.</p>
         <a class="button button--primary" href="order.html?product=vase">Оставить заявку на товар</a>
       </div>
@@ -137,7 +154,7 @@
     <section class="section" id="compare" aria-labelledby="compare-title">
       <h2 class="section__title" id="compare-title">Сравнение характеристик</h2>
       <p>Общая таблица помогает сопоставить материал, размер, уход и цену трёх учебных товаров.</p>
-      <div class="compare-table-wrap">
+      <div class="compare-table-wrap table-wrapper">
         <table class="product-table compare-table">
           <caption class="product-table__caption">Сравнение чайника «Берёза», пледа «Туман» и вазы «Река»</caption>
           <thead class="product-table__head">
