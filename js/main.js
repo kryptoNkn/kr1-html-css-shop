@@ -1,10 +1,8 @@
-// Минимальная логика учебных форм: данные не отправляются на сервер.
 const orderDialog = document.getElementById('order-dialog');
 const orderForm = document.getElementById('order-form');
 const successMessage = document.getElementById('success-message');
 const selectedProductInput = document.getElementById('selected-product');
 
-// ARIA сообщает об ошибке средствам доступности, модификатор задаёт её вид.
 function setFieldInvalid(field, invalid) {
   const fieldClass = {
     INPUT: 'order-form__input',
@@ -35,7 +33,6 @@ function clearErrors() {
   });
 }
 
-// Модальное окно есть только на главной. Страница заявки работает независимо.
 if (orderDialog) {
   const title = document.getElementById('order-dialog-title');
   const productLabel = document.getElementById('selected-product-label');
@@ -63,7 +60,6 @@ if (orderDialog) {
   });
 }
 
-// Подставляем только один из товаров, уже заданных в HTML, без вставки HTML из URL.
 if (selectedProductInput instanceof HTMLSelectElement) {
   const product = new URLSearchParams(window.location.search).get('product');
   if (product && Array.from(selectedProductInput.options).some((option) => option.value === product)) {
@@ -104,7 +100,6 @@ if (orderForm) {
       return;
     }
 
-    // reset вызывает свой обработчик, поэтому сообщение показываем после очистки.
     orderForm.reset();
     successMessage.textContent = 'Заявка проверена. В учебной версии данные не отправляются на сервер.';
     successMessage.hidden = false;
@@ -232,3 +227,48 @@ if (catalogForm && catalogCards.length && catalogGrid) {
     applyCatalogFilters();
   }
 }
+
+const kettle = {
+  name: 'Чайник «Берёза»',
+  category: 'Посуда',
+  price: 1200,
+  discountPercent: 10,
+  inStock: true,
+};
+
+function formatPrice(amount) {
+  return `${amount} руб.`;
+}
+
+function calculateDiscount(price, percent) {
+  const discount = price * percent / 100;
+  return price - discount;
+}
+
+function getProductStatus(product) {
+  if (!product.inStock || product.price < 0) {
+    return 'Нет в наличии';
+  }
+
+  if (product.discountPercent > 0 && product.price >= 1000) {
+    return 'В наличии, действует скидка';
+  }
+
+  return 'В наличии';
+}
+
+function getShortDescription(product) {
+  const finalPrice = calculateDiscount(product.price, product.discountPercent);
+  const status = getProductStatus(product);
+  const hasDiscount = product.inStock && product.discountPercent > 0;
+
+  return hasDiscount
+    ? `${product.name}, ${product.category}. ${status}. Цена со скидкой: ${formatPrice(finalPrice)}`
+    : `${product.name}, ${product.category}. ${status}. Цена: ${formatPrice(product.price)}`;
+}
+
+console.log('Товар:', kettle);
+console.log('Цена:', formatPrice(kettle.price));
+console.log('Цена со скидкой:', formatPrice(calculateDiscount(kettle.price, kettle.discountPercent)));
+console.log('Статус:', getProductStatus(kettle));
+console.log('Описание:', getShortDescription(kettle));
